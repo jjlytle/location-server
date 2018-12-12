@@ -6,9 +6,9 @@ const {
 
 const delay = require('delay');
 
-var app_id	= 'location-service-oktga';
-var dbname          = 'test';
-var collectionName  = 'points ';
+var app_id	= 'iot-tracker-xzucd';
+var dbname          = 'myLocation';
+var collectionName  = 'point';
 var filename        = './data/run1.csv';
 var timeNow 		= 1543835415241
 var timeDiv			= 50
@@ -43,10 +43,11 @@ function generateData(stitchClient)
 		var arr = line.split(',');
 		var myobj =
 		{
-			name: "run1",
-			time: timeNow+=timeDiv,
-			startingCoord: { type: "Point", coordinates: [startLong, startLat]},
-			location: { type: "Point", coordinates: [arr[0], arr[1]] }
+			// name: "run1",
+			// time: timeNow+=timeDiv,
+			// location: { type: "Point", coordinates: [arr[0], arr[1]] }
+			x: arr[0],
+			y: arr[1],
 		};
 		stitchClient.callFunction('location', [myobj]).catch(function(value) {
 			console.log(value);
